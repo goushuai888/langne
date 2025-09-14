@@ -1,0 +1,284 @@
+/* Mobile Optimization - 移动端优化 */
+
+/* Mobile-first Responsive Breakpoints */
+@media (max-width: 767px) {
+  /* Mobile Container */
+  .VPDoc .container,
+  .VPContent .container {
+    padding: 0 var(--ln-space-4);
+  }
+
+  /* Mobile Hero Section */
+  .VPHero {
+    padding-top: var(--ln-space-12);
+    padding-bottom: var(--ln-space-10);
+    text-align: center;
+  }
+
+  .VPHero .container {
+    padding: 0 var(--ln-space-4);
+  }
+
+  .VPHero .name {
+    font-size: var(--ln-font-size-3xl);
+    line-height: var(--ln-line-height-tight);
+  }
+
+  .VPHero .text {
+    font-size: var(--ln-font-size-lg);
+    margin-top: var(--ln-space-3);
+  }
+
+  .VPHero .tagline {
+    font-size: var(--ln-font-size-base);
+    margin-top: var(--ln-space-2);
+  }
+
+  .VPHero .actions {
+    flex-direction: column;
+    margin-top: var(--ln-space-6);
+    gap: var(--ln-space-3);
+  }
+
+  /* Mobile Buttons */
+  .VPButton {
+    width: 100%;
+    padding: var(--ln-space-4) var(--ln-space-6);
+    min-height: 48px; /* WCAG 触控目标最小尺寸 */
+    font-size: var(--ln-font-size-base);
+  }
+
+  /* Mobile Navigation */
+  .VPNav {
+    position: sticky;
+    top: 0;
+    z-index: var(--ln-z-sticky);
+  }
+
+  .VPNavBar {
+    padding: 0 var(--ln-space-4);
+    height: 60px;
+  }
+
+  /* Mobile Menu Button */
+  .VPNavBarHamburger {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Mobile Sidebar */
+  .VPSidebar {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 60px);
+    background: var(--ln-color-bg-primary);
+    border-right: none;
+    border-top: 1px solid var(--ln-color-border-primary);
+    z-index: var(--ln-z-modal);
+    transform: translateX(-100%);
+    transition: transform var(--ln-transition-base);
+  }
+
+  .VPSidebar.open {
+    transform: translateX(0);
+  }
+
+  /* Mobile Content */
+  .VPContent {
+    padding-top: var(--ln-space-6);
+  }
+
+  .VPDoc .content {
+    padding: 0 var(--ln-space-4);
+  }
+
+  /* Mobile Feature Cards */
+  .VPFeatures {
+    padding: var(--ln-space-10) var(--ln-space-4);
+  }
+
+  .VPFeatures .container {
+    grid-template-columns: 1fr;
+    gap: var(--ln-space-6);
+  }
+
+  .VPFeature {
+    padding: var(--ln-space-6);
+  }
+
+  /* Mobile Typography */
+  .VPDoc h1 {
+    font-size: var(--ln-font-size-2xl);
+    margin-bottom: var(--ln-space-4);
+  }
+
+  .VPDoc h2 {
+    font-size: var(--ln-font-size-xl);
+    margin-top: var(--ln-space-6);
+    margin-bottom: var(--ln-space-3);
+  }
+
+  .VPDoc h3 {
+    font-size: var(--ln-font-size-lg);
+  }
+
+  /* Mobile Tables */
+  .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  table {
+    min-width: 600px;
+    font-size: var(--ln-font-size-sm);
+  }
+
+  th, td {
+    padding: var(--ln-space-2) var(--ln-space-3);
+    white-space: nowrap;
+  }
+
+  /* Mobile Code Blocks */
+  pre {
+    font-size: var(--ln-font-size-xs);
+    padding: var(--ln-space-3);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Touch-friendly Interactive Elements */
+  a, button, .interactive-element {
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* Mobile Form Elements */
+  input, textarea, select {
+    min-height: 48px;
+    padding: var(--ln-space-3) var(--ln-space-4);
+    font-size: var(--ln-font-size-base);
+    border-radius: var(--ln-radius-lg);
+  }
+}
+
+/* Tablet Optimization */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .VPHero .name {
+    font-size: var(--ln-font-size-4xl);
+  }
+
+  .VPFeatures .container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--ln-space-6);
+  }
+
+  .VPNavBar {
+    padding: 0 var(--ln-space-6);
+  }
+}
+
+/* Mobile Landscape Optimization */
+@media (max-width: 767px) and (orientation: landscape) {
+  .VPHero {
+    padding-top: var(--ln-space-8);
+    padding-bottom: var(--ln-space-6);
+  }
+
+  .VPHero .name {
+    font-size: var(--ln-font-size-2xl);
+  }
+
+  .VPNavBar {
+    height: 50px;
+  }
+
+  .VPSidebar {
+    top: 50px;
+    height: calc(100vh - 50px);
+  }
+}
+
+/* Touch Device Optimizations */
+@media (pointer: coarse) {
+  /* Larger touch targets */
+  .VPNavBarMenuLink {
+    padding: var(--ln-space-4) var(--ln-space-3);
+    min-height: 48px;
+  }
+
+  /* Remove hover effects on touch devices */
+  .VPFeature:hover {
+    transform: none;
+  }
+
+  .VPButton:hover {
+    transform: none;
+  }
+
+  /* Add tap effects instead */
+  .VPButton:active {
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
+  }
+
+  .VPFeature:active {
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
+  }
+}
+
+/* iOS Safari Specific Fixes */
+@supports (-webkit-touch-callout: none) {
+  /* Fix iOS viewport height issues */
+  .VPSidebar {
+    height: -webkit-fill-available;
+  }
+
+  /* Fix iOS button styling */
+  .VPButton {
+    -webkit-appearance: none;
+    border-radius: var(--ln-radius-lg);
+  }
+
+  /* Fix iOS input zoom */
+  input, textarea, select {
+    font-size: 16px;
+  }
+}
+
+/* High DPI Display Optimization */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* Sharper borders on retina displays */
+  .VPFeature,
+  .VPNav,
+  table {
+    border-width: 0.5px;
+  }
+}
+
+/* Reduced Motion for Mobile */
+@media (prefers-reduced-motion: reduce) and (max-width: 767px) {
+  .VPSidebar {
+    transition: none;
+  }
+
+  .VPButton:active,
+  .VPFeature:active {
+    transform: none;
+  }
+}
+
+/* Dark Theme Mobile Optimizations */
+html.dark .VPSidebar {
+  background: var(--ln-color-bg-primary);
+  border-top-color: var(--ln-color-border-primary);
+}

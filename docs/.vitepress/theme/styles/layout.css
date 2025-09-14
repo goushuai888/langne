@@ -1,0 +1,170 @@
+/* Layout System - 布局系统 */
+
+/* Container Improvements */
+.VPDoc .container,
+.VPContent .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--ln-space-6);
+}
+
+/* Hero Section Enhancements */
+.VPHome {
+  background: linear-gradient(135deg,
+    var(--ln-color-bg-primary) 0%,
+    var(--ln-color-bg-secondary) 100%
+  );
+}
+
+.VPHero {
+  padding-top: var(--ln-space-20);
+  padding-bottom: var(--ln-space-16);
+}
+
+.VPHero .name {
+  font-size: var(--ln-font-size-5xl);
+  font-weight: var(--ln-font-weight-bold);
+  line-height: var(--ln-line-height-tight);
+  background: linear-gradient(135deg,
+    var(--ln-color-brand-primary),
+    var(--ln-color-brand-secondary)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.VPHero .text {
+  font-size: var(--ln-font-size-xl);
+  color: var(--ln-color-text-secondary);
+  margin-top: var(--ln-space-4);
+}
+
+.VPHero .tagline {
+  font-size: var(--ln-font-size-lg);
+  color: var(--ln-color-text-tertiary);
+  margin-top: var(--ln-space-3);
+  max-width: 600px;
+}
+
+/* Action Buttons */
+.VPHero .actions {
+  margin-top: var(--ln-space-8);
+  gap: var(--ln-space-4);
+}
+
+.VPButton {
+  padding: var(--ln-space-3) var(--ln-space-6);
+  border-radius: var(--ln-radius-lg);
+  font-weight: var(--ln-font-weight-medium);
+  font-size: var(--ln-font-size-base);
+  transition: all var(--ln-transition-base);
+  box-shadow: var(--ln-shadow-sm);
+}
+
+.VPButton:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--ln-shadow-lg);
+}
+
+.VPButton.brand {
+  background: linear-gradient(135deg,
+    var(--ln-color-brand-primary),
+    var(--ln-color-brand-secondary)
+  );
+}
+
+/* Feature Cards */
+.VPFeatures {
+  padding: var(--ln-space-16) 0;
+  background: var(--ln-color-bg-secondary);
+}
+
+.VPFeature {
+  border-radius: var(--ln-radius-xl);
+  box-shadow: var(--ln-shadow-base);
+  border: 1px solid var(--ln-color-border-primary);
+  transition: all var(--ln-transition-base);
+  background: var(--ln-color-bg-primary);
+}
+
+.VPFeature:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--ln-shadow-lg);
+  border-color: var(--ln-color-brand-primary);
+}
+
+.VPFeature .title {
+  color: var(--ln-color-text-primary);
+  font-weight: var(--ln-font-weight-semibold);
+  font-size: var(--ln-font-size-lg);
+}
+
+.VPFeature .details {
+  color: var(--ln-color-text-secondary);
+  line-height: var(--ln-line-height-relaxed);
+}
+
+/* Navigation Improvements */
+.VPNav {
+  backdrop-filter: blur(10px);
+  background: var(--ln-color-bg-overlay);
+  border-bottom: 1px solid var(--ln-color-border-primary);
+}
+
+.VPNavBar {
+  padding: 0 var(--ln-space-6);
+}
+
+/* Content Layout */
+.VPContent {
+  padding-top: var(--ln-space-8);
+}
+
+.VPDoc .content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Sidebar */
+.VPSidebar {
+  border-right: 1px solid var(--ln-color-border-primary);
+  background: var(--ln-color-bg-primary);
+}
+
+/* Footer */
+.VPFooter {
+  background: var(--ln-color-bg-secondary);
+  border-top: 1px solid var(--ln-color-border-primary);
+  padding: var(--ln-space-12) 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .VPHero {
+    padding-top: var(--ln-space-12);
+    padding-bottom: var(--ln-space-10);
+    text-align: center;
+  }
+
+  .VPHero .name {
+    font-size: var(--ln-font-size-3xl);
+  }
+
+  .VPHero .text {
+    font-size: var(--ln-font-size-lg);
+  }
+
+  .VPHero .tagline {
+    font-size: var(--ln-font-size-base);
+  }
+
+  .VPFeatures {
+    padding: var(--ln-space-10) 0;
+  }
+
+  .VPButton {
+    width: 100%;
+    margin-bottom: var(--ln-space-3);
+  }
+}

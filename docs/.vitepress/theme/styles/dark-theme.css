@@ -1,0 +1,209 @@
+/* Dark Theme - 深色主题 */
+
+/* 深色主题变量覆盖 */
+html.dark {
+  /* Background Colors */
+  --ln-color-bg-primary: #0d1117;
+  --ln-color-bg-secondary: #161b22;
+  --ln-color-bg-tertiary: #21262d;
+  --ln-color-bg-overlay: rgba(13, 17, 23, 0.95);
+
+  /* Text Colors */
+  --ln-color-text-primary: #f0f6fc;
+  --ln-color-text-secondary: #8b949e;
+  --ln-color-text-tertiary: #6e7681;
+  --ln-color-text-inverse: #0d1117;
+
+  /* Border Colors */
+  --ln-color-border-primary: #30363d;
+  --ln-color-border-secondary: #21262d;
+
+  /* Brand Colors remain the same for consistency */
+  --ln-color-brand-primary: #58a6ff;
+  --ln-color-brand-secondary: #3fb950;
+  --ln-color-brand-accent: #d29922;
+  --ln-color-brand-danger: #f85149;
+
+  /* Shadows for dark theme */
+  --ln-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --ln-shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.4), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  --ln-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  --ln-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+  --ln-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+  --ln-shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+}
+
+/* Dark Theme Specific Styles */
+html.dark {
+  /* VitePress Variable Overrides for Dark Mode */
+  --vp-c-bg: var(--ln-color-bg-primary);
+  --vp-c-bg-alt: var(--ln-color-bg-secondary);
+  --vp-c-bg-elv: var(--ln-color-bg-tertiary);
+
+  --vp-c-text-1: var(--ln-color-text-primary);
+  --vp-c-text-2: var(--ln-color-text-secondary);
+  --vp-c-text-3: var(--ln-color-text-tertiary);
+
+  --vp-c-border: var(--ln-color-border-primary);
+  --vp-c-divider: var(--ln-color-border-secondary);
+
+  --vp-c-brand-1: var(--ln-color-brand-primary);
+  --vp-c-brand-2: var(--ln-color-brand-primary);
+  --vp-c-brand-3: var(--ln-color-brand-primary);
+}
+
+/* Dark Theme Hero Section */
+html.dark .VPHome {
+  background: linear-gradient(135deg,
+    var(--ln-color-bg-primary) 0%,
+    var(--ln-color-bg-secondary) 100%
+  );
+}
+
+html.dark .VPHero .name {
+  background: linear-gradient(135deg,
+    var(--ln-color-brand-primary),
+    var(--ln-color-brand-secondary)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Dark Theme Feature Cards */
+html.dark .VPFeature {
+  background: var(--ln-color-bg-secondary);
+  border-color: var(--ln-color-border-primary);
+}
+
+html.dark .VPFeature:hover {
+  border-color: var(--ln-color-brand-primary);
+  box-shadow: 0 8px 25px rgba(88, 166, 255, 0.15);
+}
+
+/* Dark Theme Navigation */
+html.dark .VPNav {
+  background: var(--ln-color-bg-overlay);
+  border-bottom-color: var(--ln-color-border-primary);
+}
+
+/* Dark Theme Code Blocks */
+html.dark pre {
+  background: var(--ln-color-bg-tertiary);
+  border: 1px solid var(--ln-color-border-primary);
+}
+
+html.dark code {
+  background: var(--ln-color-bg-tertiary);
+  color: var(--ln-color-text-primary);
+}
+
+/* Dark Theme Tables */
+html.dark table {
+  background: var(--ln-color-bg-secondary);
+  border: 1px solid var(--ln-color-border-primary);
+}
+
+html.dark th {
+  background: var(--ln-color-bg-tertiary);
+  color: var(--ln-color-text-primary);
+}
+
+html.dark tr:hover {
+  background: var(--ln-color-bg-tertiary);
+}
+
+/* Dark Theme Blockquotes */
+html.dark blockquote {
+  background: var(--ln-color-bg-tertiary);
+  border-left-color: var(--ln-color-brand-primary);
+}
+
+/* Dark Theme Selection */
+html.dark ::selection {
+  background: var(--ln-color-brand-primary);
+  color: var(--ln-color-bg-primary);
+}
+
+html.dark ::-moz-selection {
+  background: var(--ln-color-brand-primary);
+  color: var(--ln-color-bg-primary);
+}
+
+/* Dark Theme Buttons */
+html.dark .VPButton.brand {
+  background: linear-gradient(135deg,
+    var(--ln-color-brand-primary),
+    var(--ln-color-brand-secondary)
+  );
+  color: var(--ln-color-bg-primary);
+}
+
+html.dark .VPButton.alt {
+  background: var(--ln-color-bg-tertiary);
+  border-color: var(--ln-color-border-primary);
+  color: var(--ln-color-text-primary);
+}
+
+html.dark .VPButton.alt:hover {
+  background: var(--ln-color-bg-secondary);
+  border-color: var(--ln-color-brand-primary);
+}
+
+/* Dark Theme Sidebar */
+html.dark .VPSidebar {
+  background: var(--ln-color-bg-primary);
+  border-right-color: var(--ln-color-border-primary);
+}
+
+/* Dark Theme Footer */
+html.dark .VPFooter {
+  background: var(--ln-color-bg-secondary);
+  border-top-color: var(--ln-color-border-primary);
+}
+
+/* Dark Theme Link Effects */
+html.dark a:not(.VPButton)::after {
+  background: var(--ln-color-brand-primary);
+}
+
+/* Dark Theme Focus Styles */
+html.dark :focus-visible {
+  outline-color: var(--ln-color-brand-primary);
+}
+
+/* Dark Theme Animation Overrides */
+html.dark .VPButton::before {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+}
+
+/* Dark Theme Scrollbar */
+html.dark ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: var(--ln-color-bg-secondary);
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: var(--ln-color-border-primary);
+  border-radius: 4px;
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: var(--ln-color-text-tertiary);
+}
+
+/* Ensure smooth theme transition */
+* {
+  transition: background-color var(--ln-transition-base),
+              border-color var(--ln-transition-base),
+              color var(--ln-transition-base) !important;
+}
