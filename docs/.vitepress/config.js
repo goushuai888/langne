@@ -1,8 +1,8 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
-  title: 'VitePress',
-  description: 'A VitePress Site',
+  title: 'LangNe',
+  description: 'A LangNe Site',
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' },

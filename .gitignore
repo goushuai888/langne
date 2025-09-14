@@ -3,6 +3,6 @@ node_modules
 dist
 *.local
 
-# VitePress cache and build output
+# LangNe cache and build output
 docs/.vitepress/cache
 docs/.vitepress/dist

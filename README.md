@@ -1,10 +1,10 @@
 # 朗恩科技文档站点
 
-基于 VitePress 构建的现代化文档站点，提供完整的中文支持和优雅的用户体验。
+基于 LangNe 构建的现代化文档站点，提供完整的中文支持和优雅的用户体验。
 
 ## 🚀 特性
 
-- ✨ **现代化设计** - 基于 VitePress 构建，具有优雅的界面设计
+- ✨ **现代化设计** - 基于 LangNe 构建，具有优雅的界面设计
 - 🌏 **完整中文支持** - 包含中文界面本地化和中文内容
 - 📱 **响应式布局** - 完美适配桌面端和移动端
 - 🎨 **主题切换** - 支持浅色/深色主题切换
@@ -47,7 +47,7 @@ langne/
 │   ├── about.md           # 关于我们
 │   ├── markdown-examples.md
 │   └── api-examples.md
-├── .vitepress/            # VitePress 配置
+├── .vitepress/            # LangNe 配置
 │   └── config.mts         # 站点配置文件
 ├── package.json
 └── README.md
@@ -67,7 +67,7 @@ langne/
 
 - 所有文档内容使用 Markdown 格式编写
 - 文件位于 `docs/` 目录下
-- 支持 VitePress 的扩展 Markdown 语法
+- 支持 LangNe 的扩展 Markdown 语法
 - 可以在 Markdown 中使用 Vue 组件
 
 ## 🌐 部署
@@ -79,7 +79,7 @@ langne/
 
 ### Vercel
 1. 连接你的 GitHub 仓库到 Vercel
-2. Vercel 会自动识别为 VitePress 项目
+2. Vercel 会自动识别为 LangNe 项目
 3. 自动部署完成
 
 ### 其他平台
