@@ -7,19 +7,61 @@ export default defineConfig({
   themeConfig: {
     nav: [
       { text: '首页', link: '/' },
-      { text: '示例', link: '/markdown-examples' },
-      { text: '关于我们', link: '/about' }
+      {
+        text: '服务',
+        items: [
+          { text: '技术架构', link: '/services/architecture' },
+          { text: '解决方案', link: '/services/solutions' },
+          { text: '开发服务', link: '/services/development' },
+          { text: '技术咨询', link: '/services/consulting' }
+        ]
+      },
+      {
+        text: '文档',
+        items: [
+          { text: '快速开始', link: '/docs/getting-started' },
+          { text: 'API 参考', link: '/api-examples' },
+          { text: '开发指南', link: '/markdown-examples' },
+          { text: '最佳实践', link: '/docs/best-practices' }
+        ]
+      },
+      { text: '关于我们', link: '/about' },
+      { text: '联系我们', link: '/contact' }
     ],
 
-    sidebar: [
-      {
-        text: '文档示例',
-        items: [
-          { text: 'Markdown 示例', link: '/markdown-examples' },
-          { text: 'API 示例', link: '/api-examples' }
-        ]
-      }
-    ],
+    sidebar: {
+      '/services/': [
+        {
+          text: '服务项目',
+          items: [
+            { text: '技术架构', link: '/services/architecture' },
+            { text: '解决方案', link: '/services/solutions' },
+            { text: '开发服务', link: '/services/development' },
+            { text: '技术咨询', link: '/services/consulting' }
+          ]
+        }
+      ],
+      '/docs/': [
+        {
+          text: '文档中心',
+          items: [
+            { text: '快速开始', link: '/docs/getting-started' },
+            { text: '开发指南', link: '/markdown-examples' },
+            { text: 'API 参考', link: '/api-examples' },
+            { text: '最佳实践', link: '/docs/best-practices' }
+          ]
+        }
+      ],
+      '/': [
+        {
+          text: '快速导航',
+          items: [
+            { text: '关于我们', link: '/about' },
+            { text: '联系我们', link: '/contact' }
+          ]
+        }
+      ]
+    },
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/yourusername/langne' }
