@@ -8,12 +8,29 @@ export default defineConfig({
     nav: [
       { text: '首页', link: '/' },
       {
+        text: '产品',
+        items: [
+          { text: 'LangNe 文档平台', link: '/products/langne' },
+          { text: '企业管理系统', link: '/products/enterprise' },
+          { text: '数据可视化平台', link: '/products/dataviz' },
+          { text: '移动应用开发', link: '/products/mobile' }
+        ]
+      },
+      {
         text: '服务',
         items: [
           { text: '技术架构', link: '/services/architecture' },
           { text: '解决方案', link: '/services/solutions' },
           { text: '开发服务', link: '/services/development' },
           { text: '技术咨询', link: '/services/consulting' }
+        ]
+      },
+      {
+        text: '案例',
+        items: [
+          { text: '成功案例', link: '/cases/success' },
+          { text: '客户故事', link: '/cases/stories' },
+          { text: '行业解决方案', link: '/cases/industry' }
         ]
       },
       {
@@ -25,11 +42,30 @@ export default defineConfig({
           { text: '最佳实践', link: '/docs/best-practices' }
         ]
       },
+      {
+        text: '博客',
+        items: [
+          { text: '技术文章', link: '/blog/tech' },
+          { text: '行业动态', link: '/blog/industry' },
+          { text: '公司新闻', link: '/blog/news' }
+        ]
+      },
       { text: '关于我们', link: '/about' },
       { text: '联系我们', link: '/contact' }
     ],
 
     sidebar: {
+      '/products/': [
+        {
+          text: '产品中心',
+          items: [
+            { text: 'LangNe 文档平台', link: '/products/langne' },
+            { text: '企业管理系统', link: '/products/enterprise' },
+            { text: '数据可视化平台', link: '/products/dataviz' },
+            { text: '移动应用开发', link: '/products/mobile' }
+          ]
+        }
+      ],
       '/services/': [
         {
           text: '服务项目',
@@ -41,6 +77,16 @@ export default defineConfig({
           ]
         }
       ],
+      '/cases/': [
+        {
+          text: '案例展示',
+          items: [
+            { text: '成功案例', link: '/cases/success' },
+            { text: '客户故事', link: '/cases/stories' },
+            { text: '行业解决方案', link: '/cases/industry' }
+          ]
+        }
+      ],
       '/docs/': [
         {
           text: '文档中心',
@@ -49,6 +95,16 @@ export default defineConfig({
             { text: '开发指南', link: '/markdown-examples' },
             { text: 'API 参考', link: '/api-examples' },
             { text: '最佳实践', link: '/docs/best-practices' }
+          ]
+        }
+      ],
+      '/blog/': [
+        {
+          text: '博客文章',
+          items: [
+            { text: '技术文章', link: '/blog/tech' },
+            { text: '行业动态', link: '/blog/industry' },
+            { text: '公司新闻', link: '/blog/news' }
           ]
         }
       ],
