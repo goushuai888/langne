@@ -17,14 +17,19 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## 常用开发命令
 
 ```bash
-# 启动开发服务器
+# 启动开发服务器（默认端口 5173）
 npm run docs:dev
 
-# 构建生产版本
+# 构建生产版本（输出到 .vitepress/dist）
 npm run docs:build
 
 # 预览构建结果
 npm run docs:preview
+
+# 安装依赖（推荐使用 pnpm）
+pnpm install
+# 或
+npm install
 ```
 
 **重要**: README.md 中显示的简化命令（`dev`, `build`, `preview`）在实际 package.json 中并不存在，实际命令为 `docs:dev`, `docs:build`, `docs:preview`
@@ -57,14 +62,18 @@ npm run docs:preview
 - `utils/accessibility.ts` - WCAG 2.1 AA 标准完整实现，包含键盘导航、屏幕阅读器支持、焦点管理、色彩对比度检查和可访问性自动化测试
 - `styles/custom.css` - 朗恩科技品牌样式系统和响应式设计框架
 
-### 内容结构
-- `docs/index.md` - 首页（使用 `layout: home` frontmatter）
-- `docs/about.md` - 公司介绍页面
-- `docs/contact.md` - 联系我们页面
-- `docs/markdown-examples.md` - Markdown 语法示例
-- `docs/api-examples.md` - 运行时 API 示例，包含 Vue 组件嵌入
-- `docs/services/` - 服务项目目录（架构、解决方案、开发服务、技术咨询）
-- `docs/docs/` - 文档目录（快速开始、最佳实践）
+### 内容结构和导航
+- **首页**: `docs/index.md` - 使用 `layout: home` frontmatter 的主页
+- **核心页面**: `about.md`（公司介绍）、`contact.md`（联系我们）
+- **示例页面**: `markdown-examples.md`（Markdown 语法）、`api-examples.md`（Vue 组件嵌入示例）
+- **服务目录**: `docs/services/` - 架构、解决方案、开发服务、技术咨询
+- **文档目录**: `docs/docs/` - 快速开始、最佳实践
+- **配置文件**: `docs/docs/config.mts` - 双层目录结构的 VitePress 主配置
+
+### 导航系统
+- **顶部导航**: 包含产品、服务、案例、文档、博客等主要分类
+- **侧边栏**: 按目录路径自动组织的结构化导航
+- **中文本地化**: 完整的界面文本翻译和 RTL 支持
 
 ### 性能和可访问性
 - **性能优化**: 智能导航、图片懒加载、资源预加载、GPU 加速动画
@@ -73,15 +82,18 @@ npm run docs:preview
 
 ## 开发工作流和代码质量
 
+### Git 工作流程
+- **主分支**: main（用于生产环境代码）
+- **当前状态**: 存在未提交的修改（CLAUDE.md 已更新）
+- **提交规范**: 建议使用语义化提交信息（feat, fix, docs, refactor 等）
+
 ### 自动化代码质量工具（`.claude/settings.local.json`）
 项目配置了完整的自动化代码质量工作流：
-- **ESLint**: JavaScript/TypeScript 代码检查和自动修复
-- **Prettier**: 代码格式化，支持多种语言
-- **安全扫描**: semgrep（通用安全扫描）、bandit（Python安全）、gitleaks（密钥泄露检测）
-- **自动化代码提交**: PostToolUse hooks 自动执行 git add 和 commit，基于变更大小生成提交消息
-- **多语言支持**: Python (pylint, black), Go (gofmt), Rust (rustfmt), PHP (php-cs-fixer), Ruby (rubocop)
-
-**关键问题**: 当前配置存在严重重复 - ESLint、Prettier、git commit hooks 各重复了4-6次，需要立即清理以避免性能问题和冲突。
+- **文件读写权限**: 自动获取对 JavaScript、TypeScript、Python、JSON 文件的读写权限
+- **包管理命令**: 允许执行 npm、yarn、node、python、pip、git、docker 等命令
+- **高级工具集成**: 集成 GitHub 搜索、Chrome DevTools、浏览器自动化等 MCP 工具
+- **安全扫描**: 支持密钥泄露检测和环境变量读取
+- **多语言支持**: Python、JavaScript、TypeScript、Shell 脚本等的全面支持
 
 ### 关键文件路径说明
 - **主题文件**: `docs/.vitepress/theme/index.ts` - 自定义主题入口，包含智能导航、动画效果和性能优化
@@ -91,29 +103,45 @@ npm run docs:preview
 
 ## 依赖和构建信息
 
-### 包管理和依赖
-- **包管理器**: npm（项目包含 pnpm-lock.yaml 确保依赖一致性）
-- **核心依赖**: VitePress 2.0.0-alpha.12（开发依赖）
-- **依赖安装**: `npm install` 或 `pnpm install`
+### 核心依赖
+- **VitePress**: 2.0.0-alpha.12（开发依赖），提供静态站点生成功能
+- **包管理器**: pnpm（推荐）或 npm，项目使用 pnpm-lock.yaml 确保依赖一致性
+- **依赖安装**: `pnpm install` 或 `npm install`
 
-### 构建和部署
-- **开发服务器**: `npm run docs:dev`（默认端口 5173）
-- **生产构建**: `npm run docs:build`（输出到 `.vitepress/dist`）
-- **构建预览**: `npm run docs:preview`
-- **支持平台**: GitHub Pages, Vercel, Netlify, Cloudflare Pages
+### 构建和部署平台
+- **静态托管**: GitHub Pages, Vercel, Netlify, Cloudflare Pages
+- **构建命令**: `npm run docs:build`
+- **预览命令**: `npm run docs:preview`
+- **输出目录**: `.vitepress/dist`（可直接部署的静态文件）
 
 ## 架构注意事项
 
 ### 目录结构特殊性
 项目使用双层配置目录结构：`docs/docs/config.mts`，这与标准 VitePress 项目结构不同，配置文件位于 docs 子目录内。
 
-### 自动化工具配置问题
-- `.claude/settings.local.json` 中存在严重的 hooks 重复配置问题
-- ESLint 重复4次、Prettier 重复4次、git commit hooks 重复6次
-- **必须清理**：保留每种 hook 的一个实例，删除所有重复项
+### 开发环境配置
+- **Node.js 要求**: >= 16
+- **推荐包管理器**: pnpm（项目包含 pnpm-lock.yaml 确保依赖一致性）
+- **开发服务器**: 默认运行在 http://localhost:5173
+- **构建输出**: `.vitepress/dist` 目录
+- **缓存管理**: `.vitepress/cache` 目录用于 VitePress 构建缓存
 
 ### 主题系统架构特点
 - **智能导航系统**: 基于 requestAnimationFrame 的高性能滚动监听，实现自动隐藏/显示导航栏
 - **模块化工具架构**: 独立的性能优化管理器（PerformanceManager）和可访问性管理器（AccessibilityManager），支持配置化初始化
 - **企业级可访问性**: 完整的 WCAG 2.1 AA 标准实现，包含键盘导航、屏幕阅读器支持、焦点管理、色彩对比度检查和自动化可访问性测试
 - **性能监控集成**: 内置 Core Web Vitals 监控、设备性能检测、网络状况感知，支持智能资源加载策略和性能分析报告
+
+## 依赖和版本信息
+
+### package.json 结构
+项目采用极简的依赖配置：
+- **devDependencies**: 仅包含 `vitepress: 2.0.0-alpha.12`
+- **scripts**: 标准 VitePress 命令（docs:dev, docs:build, docs:preview）
+- **包管理器**: 使用 pnpm-lock.yaml 确保依赖一致性
+
+### VitePress 版本特性
+- **版本**: 2.0.0-alpha.12（开发版本，包含最新特性）
+- **构建输出**: 静态 HTML/CSS/JS，支持 SPA 导航
+- **开发体验**: HMR（热模块替换）、快速重新构建
+- **主题系统**: 基于 Vue 3 的可扩展主题架构

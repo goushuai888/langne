@@ -1,42 +1,47 @@
 ---
-# https://vitepress.dev/reference/default-theme-home-page
 layout: home
 
 hero:
   name: "朗恩科技"
-  text: "创新技术 · 专业服务"
-  tagline: 专注于提供前沿的技术解决方案，助力企业实现数字化转型，创造卓越价值
+  text: "企业数字化转型的技术伙伴"
+  tagline: "用前沿技术赋能企业创新，用专业服务保障项目成功"
   image:
     src: /hero-image.svg
-    alt: 朗恩科技 Logo
+    alt: 朗恩科技 - 企业数字化转型专家
   actions:
     - theme: brand
-      text: 探索服务
-      link: /about
+      text: 免费咨询
+      link: /contact
     - theme: alt
-      text: 技术文档
-      link: /markdown-examples
+      text: 查看案例
+      link: /cases/success
     - theme: alt
-      text: 联系我们
-      link: /about#联系我们
+      text: 技术方案
+      link: /services/solutions
 
 features:
+  - icon: 🏗️
+    title: 企业级技术架构
+    details: "基于云原生的微服务架构，支持高并发、高可用的企业级应用。具备完善的监控、日志、安全体系，确保业务稳定运行。"
+    link: /services/architecture
+  - icon: 📱
+    title: 全平台应用开发
+    details: "覆盖Web、移动端、小程序的全渠道开发能力。采用React Native、Flutter等跨平台技术，一次开发多端部署。"
+    link: /services/development
+  - icon: 🤖
+    title: AI智能化解决方案
+    details: "集成机器学习、自然语言处理等AI技术，为企业提供智能客服、数据分析、自动化流程等智能化升级方案。"
+    link: /products/dataviz
+  - icon: 🔒
+    title: 网络安全服务
+    details: "提供全方位的网络安全评估、渗透测试、安全加固服务。帮助企业建立完善的安全防护体系，保护核心数据资产。"
+    link: /services/consulting
+  - icon: 📊
+    title: 数据可视化平台
+    details: "专业的数据可视化和商业智能解决方案，将复杂数据转化为直观的图表和报告，助力企业数据驱动决策。"
+    link: /products/dataviz
   - icon: 🚀
-    title: 领先技术架构
-    details: 采用现代化技术栈，构建高性能、可扩展的企业级解决方案，确保系统稳定可靠运行
-  - icon: 💡
-    title: 创新解决方案
-    details: 深入理解业务需求，提供定制化技术方案，帮助企业突破技术瓶颈，实现业务目标
-  - icon: 🛠️
-    title: 全栈开发服务
-    details: 涵盖前端、后端、移动端全栈开发，提供一站式技术服务，降低项目复杂度
-  - icon: 🔧
-    title: 技术咨询服务
-    details: 专业的技术架构咨询，助力企业制定合理的技术战略，避免技术选型陷阱
-  - icon: 📚
-    title: 知识传承
-    details: 完善的文档体系和知识分享，确保项目可持续性，提升团队整体技术水平
-  - icon: 🎯
-    title: 持续支持
-    details: 7x24小时技术支持，快速响应问题解决，保障业务连续性和稳定性
+    title: DevOps实施咨询
+    details: "帮助企业建立完善的DevOps体系，包括CI/CD流水线、容器化部署、自动化测试，显著提升开发交付效率。"
+    link: /services/architecture
 ---

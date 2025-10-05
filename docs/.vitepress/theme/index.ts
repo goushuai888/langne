@@ -39,6 +39,77 @@ function initThemeFeatures() {
 
   // 性能优化
   initPerformanceOptimizations()
+
+  // 首页增强功能
+  initHomePageEnhancements()
+}
+
+// 首页增强功能
+function initHomePageEnhancements() {
+  // 仅在首页执行
+  if (!document.querySelector('.VPHero')) return
+
+  // 添加平滑滚动
+  addSmoothScrolling()
+
+  // 增强焦点管理
+  enhanceFocusManagement()
+
+  // 添加加载状态指示器
+  addLoadingIndicators()
+}
+
+// 添加平滑滚动
+function addSmoothScrolling() {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault()
+      const target = document.querySelector(this.getAttribute('href') || '')
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        })
+      }
+    })
+  })
+}
+
+// 增强焦点管理
+function enhanceFocusManagement() {
+  // 为特性卡片添加键盘导航
+  const featureCards = document.querySelectorAll('.VPFeature')
+  featureCards.forEach((card, index) => {
+    const link = card.querySelector('a')
+    if (link) {
+      link.addEventListener('focus', () => {
+        card.classList.add('focused')
+      })
+      link.addEventListener('blur', () => {
+        card.classList.remove('focused')
+      })
+    }
+  })
+
+  // 添加跳转链接（可访问性）
+  const skipLink = document.createElement('a')
+  skipLink.href = '#main-content'
+  skipLink.textContent = '跳转到主内容'
+  skipLink.className = 'skip-link'
+  document.body.insertBefore(skipLink, document.body.firstChild)
+}
+
+// 添加加载状态指示器
+function addLoadingIndicators() {
+  // 为外部链接添加加载状态
+  document.querySelectorAll('a[target="_blank"]').forEach(link => {
+    link.addEventListener('click', () => {
+      link.classList.add('loading')
+      setTimeout(() => {
+        link.classList.remove('loading')
+      }, 2000)
+    })
+  })
 }
 
 // 智能导航滚动行为
