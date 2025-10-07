@@ -26,7 +26,7 @@ cd langne
 npm install
 
 # 启动开发服务器
-npm run dev
+npm run docs:dev
 ```
 
 > 访问 [http://localhost:5173](http://localhost:5173) 查看站点
@@ -35,17 +35,16 @@ npm run dev
 
 ```bash
 # 启动开发服务器
-npm run dev
+npm run docs:dev
 
 # 构建生产版本
-npm run build
+npm run docs:build
 
 # 预览构建结果
-npm run preview
-
-# 代码检查（如果配置了）
-npm run lint
+npm run docs:preview
 ```
+
+**注意**: 项目使用 VitePress 标准命令格式（docs:前缀），而非简化命令。
 
 ## 📁 项目结构
 
@@ -100,7 +99,7 @@ langne/
 支持部署到 Netlify、Cloudflare Pages 等静态站点托管平台。
 
 ### 📦 构建输出
-- 构建命令：`npm run build`
+- 构建命令：`npm run docs:build`
 - 输出目录：`.vitepress/dist`
 - 静态文件：可直接部署到任何静态托管服务
 
