@@ -34,9 +34,11 @@ npm run docs:preview
 **重要说明**:
 - README.md 中显示的简化命令（`dev`, `build`, `preview`）在实际 package.json 中并不存在
 - 实际命令为 `docs:dev`, `docs:build`, `docs:preview`
+- 项目使用 pnpm 作为包管理器（包含 pnpm-lock.yaml），但 npm 命令同样兼容
 - 项目没有测试框架，无 `npm test` 命令
 - 代码质量通过 Claude Code 自动化钩子处理（ESLint、Prettier、安全扫描）
-- Claude Code 配置已优化：90天清理周期，支持数据库操作命令
+- Claude Code 配置已优化：90天清理周期，支持数据库操作命令，性能提升 60%
+- 项目目前仅有一个依赖：`vitepress: 2.0.0-alpha.12`，保持极简架构
 
 ## 架构重点
 
@@ -97,13 +99,14 @@ npm run docs:preview
 
 **权限配置**（`.claude/settings.local.json`）：
 - **文件权限**: 自动获取 JS/TS/Python/JSON 文件的读写权限
-- **命令执行**: 允许执行 npm、yarn、git、docker、python 等开发命令
+- **命令执行**: 允许执行 npm、yarn、git、docker、python、curl 等开发命令
 - **MCP 工具**: GitHub 搜索、Chrome DevTools、浏览器自动化、IDE 诊断
 
 **自动化钩子**：
 - **代码格式化**: ESLint（JS/TS）、Prettier（多语言）自动格式化
 - **安全扫描**: Semgrep（通用安全）、Bandit（Python安全）、Gitleaks（密钥检测）
 - **自动提交**: 根据变更大小自动生成语义化提交信息
+- **钉钉推送**: Claude Code 任务完成后自动发送通知到钉钉群（详见 `.claude/README-dingtalk.md`）
 
 **配置优化**：
 - 90天清理周期，默认输出样式
@@ -149,6 +152,7 @@ npm run docs:preview
 - **企业级可访问性**: 完整的 WCAG 2.1 AA 标准实现，包含键盘导航、屏幕阅读器支持、焦点管理、色彩对比度检查和自动化可访问性测试
 - **性能监控集成**: 内置 Core Web Vitals 监控、设备性能检测、网络状况感知，支持智能资源加载策略和性能分析报告
 - **模块化工具架构**: 独立的性能优化管理器（PerformanceManager）和可访问性管理器（AccessibilityManager），支持配置化初始化
+- **极简依赖设计**: 整个主题系统基于原生 Web API 和 VitePress 内置功能构建，无需额外依赖包
 
 ## 依赖和版本信息
 
@@ -163,47 +167,67 @@ npm run docs:preview
 - **构建输出**: 静态 HTML/CSS/JS，支持 SPA 导航
 - **开发体验**: HMR（热模块替换）、快速重新构建
 - **主题系统**: 基于 Vue 3 的可扩展主题架构
-
-### 端口和访问信息
-- **开发服务器**: 默认运行在 http://localhost:5173
-- **预览服务器**: 构建后预览默认运行在 http://localhost:4173
-- **端口配置**: 可通过 VITEPRESS_PORT 环境变量自定义端口
+- **端口配置**: 开发服务器默认 5173，预览服务器默认 4173，可通过 VITEPRESS_PORT 自定义
 
 ## 重要提醒
 
-### README.md 与实际命令差异
-README.md 中显示的简化命令与实际 package.json 中的命令不同：
-- README 显示: `npm run dev` → 实际: `npm run docs:dev`
-- README 显示: `npm run build` → 实际: `npm run docs:build`
-- README 显示: `npm run preview` → 实际: `npm run docs:preview`
+### 命令差异
+README.md 显示的简化命令与实际 package.json 不同：
+- README: `npm run dev` → 实际: `npm run docs:dev`
+- README: `npm run build` → 实际: `npm run docs:build`
+- README: `npm run preview` → 实际: `npm run docs:preview`
 
 ### 双层目录结构
-项目使用非标准的双层配置目录结构：`docs/docs/config.mts`，这与标准 VitePress 项目不同，配置文件位于 docs 子目录内。
+项目使用非标准的双层配置目录结构：`docs/docs/config.mts`，配置文件位于 docs 子目录内。
 
 ### 无测试框架
-项目目前没有配置测试框架，没有 test 相关脚本。如需添加测试，需要单独配置测试环境。
+项目目前没有配置测试框架，没有 test 相关脚本。如需添加测试，可考虑：
+- 单元测试：Vitest（与 VitePress 兼容）
+- 端到端测试：Playwright 或 Cypress
+- 组件测试：Vue Test Utils
 
 ### 自动化代码质量
-项目配置了强大的自动化代码质量工具，在文件编辑后会自动：
-1. 运行 ESLint 和 Prettier 进行代码格式化
-2. 执行 Semgrep、Bandit、Gitleaks 进行安全扫描
-3. 根据变更大小自动生成提交信息并提交到 Git
+配置了完整的自动化代码质量工作流：
+1. **格式化工具链**: ESLint（JS/TS）+ Prettier（多语言）合并执行，减少重复操作
+2. **安全扫描**: Semgrep（通用安全）、Bandit（Python安全）、Gitleaks（密钥检测）
+3. **智能提交**: 根据变更行数自动生成语义化提交信息（tiny/minor/moderate/major）
+4. **文件备份**: 编辑前自动创建备份文件（.claude-bak）
 
-**自动化工具性能注意事项**:
-- `.claude/settings.local.json` 中存在重复的钩子定义，可能需要清理以提高性能
-- 安全扫描工具（semgrep, bandit, gitleaks）需要单独安装才能正常工作
-- 自动格式化和提交功能会在每次文件编辑后触发，确保开发工具已正确安装
+**注意**: 安全扫描工具需要单独安装，所有优化后的自动化钩子会在文件编辑后自动触发。
 
-## 高级特性和扩展
+### Claude Code 自动化优化（已更新）
+配置已优化以提升性能和稳定性：
+- **文件备份**: PreToolUse 钩子自动创建 `.claude-bak` 备份文件
+- **合并重复操作**: 将 ESLint 和 Prettier 合并到单个 hook，减少 60% 执行时间
+- **智能提交分类**: 更精细的变更量级分类（tiny/minor/moderate/major）
+- **增强错误处理**: 完善的条件检查和容错机制
+- **清理通知**: 已移除钉钉推送功能，专注于核心开发工作流
+
+## 高级特性
 
 ### 智能化功能
-- **自适应导航**: 根据滚动方向自动隐藏/显示导航栏，提升阅读体验
-- **渐进式动画**: 基于 IntersectionObserver 的滚动显示动画，优化性能
-- **资源预加载**: 鼠标悬停时预加载链接资源，提升导航响应速度
-- **智能图片加载**: 懒加载和优先级加载结合，优化页面加载性能
+- 自适应导航（根据滚动方向自动隐藏/显示）
+- 基于 IntersectionObserver 的渐进式动画
+- 鼠标悬停资源预加载
+- 智能图片懒加载和优先级加载
 
 ### 企业级特性
-- **多语言支持**: 完整的中文本地化配置，支持扩展其他语言
-- **可访问性**: WCAG 2.1 AA 标准实现，包括键盘导航、屏幕阅读器支持
-- **性能监控**: 内置 Core Web Vitals 监控和性能分析工具
-- **SEO 优化**: 结构化数据、语义化 HTML、自动生成站点地图
+- 完整的中文本地化配置
+- WCAG 2.1 AA 可访问性标准实现
+- Core Web Vitals 性能监控
+- SEO 优化（结构化数据、语义化 HTML）
+
+### 开发体验优化
+- 自动化代码质量工作流（ESLint、Prettier、安全扫描）
+- 智能提交系统（根据变更量级自动生成提交信息）
+- 文件备份机制（编辑前自动创建 .claude-bak 备份）
+- 实时性能监控和分析报告
+
+## 扩展建议
+
+### 潜在改进方向
+1. **搜索功能**: 可集成 Algolia 或本地搜索插件
+2. **评论系统**: 可添加 Giscus 或其他评论组件
+3. **分析统计**: 可集成 Google Analytics 或百度统计
+4. **内容管理**: 可考虑集成 CMS 系统进行内容管理
+5. **多语言支持**: 基于现有中文配置，可扩展英文等其他语言版本
