@@ -41,12 +41,21 @@ pnpm install
 
 # 启动开发服务器（默认端口 5173）
 npm run docs:dev
+# 或使用 pnpm
+pnpm docs:dev
 
 # 构建生产版本（输出到 .vitepress/dist）
 npm run docs:build
+# 或使用 pnpm
+pnpm docs:build
 
 # 预览构建结果（默认端口 4173）
 npm run docs:preview
+# 或使用 pnpm
+pnpm docs:preview
+
+# 清理构建缓存（可选）
+rm -rf .vitepress/cache .vitepress/dist
 ```
 
 **重要说明**:
@@ -94,9 +103,9 @@ npm run docs:preview
 - **事件驱动**: 通过 `languagechange` 自定义事件支持扩展功能
 
 **高级工具模块**:
-- `utils/performance.ts` - 性能优化系统，包含 Core Web Vitals 监控和智能资源加载
-- `utils/accessibility.ts` - WCAG 2.1 AA 标准实现，包含键盘导航和屏幕阅读器支持
-- `styles/custom.css` - 朗恩科技品牌样式系统，包含语言切换按钮样式和响应式设计
+- `utils/performance.ts` - 性能优化系统，包含 Core Web Vitals 监控、智能资源加载、图片懒加载和资源预加载
+- `utils/accessibility.ts` - WCAG 2.1 AA 标准实现，包含键盘导航、屏幕阅读器支持、焦点管理、色彩对比度检查和自动化可访问性测试
+- `styles/custom.css` - 朗恩科技品牌样式系统，包含设计令牌、渐变效果、阴影系统、过渡动画和语言切换按钮样式
 
 ### 内容结构和导航
 - **首页**: `docs/index.md` - 使用 `layout: home` frontmatter 的主页
@@ -266,6 +275,7 @@ BASE_URL=/                  # 部署基础路径
 - **性能监控集成**: 内置 Core Web Vitals 监控、设备性能检测、网络状况感知，支持智能资源加载策略和性能分析报告
 - **模块化工具架构**: 独立的性能优化管理器（PerformanceManager）和可访问性管理器（AccessibilityManager），支持配置化初始化
 - **极简依赖设计**: 整个主题系统基于原生 Web API 和 VitePress 内置功能构建，无需额外依赖包
+- **品牌设计系统**: 完整的朗恩科技设计令牌（CSS 变量）、渐变效果、阴影系统和过渡动画，确保品牌一致性
 
 ## 依赖和版本信息
 
@@ -505,8 +515,9 @@ README.md 显示的简化命令与实际 package.json 不同：
 4. **代码分割**: 进一步优化路由级别的代码分割
 
 ### 功能增强方向
-1. **主题定制**: 添加更多主题色彩选项
-2. **用户偏好**: 记住用户的主题、字体大小等偏好设置
-3. **搜索优化**: 实现全文搜索和智能推荐
-4. **社交分享**: 添加社交媒体分享功能
+1. **主题定制**: 添加更多主题色彩选项和动态主题切换
+2. **用户偏好**: 记住用户的主题、字体大小等偏好设置（localStorage 持久化）
+3. **搜索优化**: 实现全文搜索和智能推荐（Algolia 或本地搜索）
+4. **社交分享**: 添加社交媒体分享功能（Open Graph 和 Twitter Cards）
 5. **RSS 订阅**: 生成 RSS feed 支持订阅功能
+6. **PWA 支持**: 添加 Service Worker 和离线访问能力
