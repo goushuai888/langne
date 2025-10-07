@@ -808,6 +808,251 @@ html.dark .input-focus::after {
   background: var(--ln-gradient-dark);
 }
 
+/* 语言切换按钮样式 */
+.VP-lang-toggle {
+  display: flex;
+  align-items: center;
+  margin-left: 0.75rem;
+}
+
+.lang-switch-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--vp-c-bg-alt);
+  border: 1px solid var(--vp-c-border);
+  border-radius: 8px;
+  color: var(--vp-c-text-1);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--ln-transition);
+  min-height: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.lang-switch-btn:hover {
+  background: var(--vp-c-bg);
+  border-color: var(--ln-primary);
+  color: var(--ln-primary);
+  transform: translateY(-1px);
+  box-shadow: var(--ln-shadow-sm);
+}
+
+.lang-switch-btn:focus-visible {
+  outline: 2px solid var(--ln-primary);
+  outline-offset: 2px;
+}
+
+.lang-switch-btn.switching {
+  animation: langSwitch 0.3s ease-in-out;
+}
+
+@keyframes langSwitch {
+  0% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(0.95) rotate(180deg); }
+  100% { transform: scale(1) rotate(360deg); }
+}
+
+.lang-icon {
+  font-size: 1rem;
+  line-height: 1;
+  transition: var(--ln-transition);
+}
+
+.lang-text {
+  font-weight: 600;
+  line-height: 1;
+}
+
+/* 深色主题下的语言切换按钮 */
+html.dark .lang-switch-btn {
+  background: rgba(30, 30, 35, 0.8);
+  border-color: rgba(66, 133, 244, 0.2);
+  color: var(--vp-c-text-1);
+}
+
+html.dark .lang-switch-btn:hover {
+  background: rgba(66, 133, 244, 0.1);
+  border-color: var(--ln-primary-dark);
+  color: var(--ln-primary-dark);
+  box-shadow: var(--ln-shadow-dark-sm);
+}
+
+/* 导航栏位置的语言切换按钮 */
+.lang-switch-btn.nav-position {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  z-index: 100;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .VP-lang-toggle {
+    margin-left: 0.5rem;
+  }
+
+  .lang-switch-btn {
+    padding: 0.425rem 0.625rem;
+    font-size: 0.8rem;
+    min-height: 36px;
+  }
+
+  .lang-icon {
+    font-size: 0.875rem;
+  }
+
+  .lang-text {
+    font-size: 0.8rem;
+  }
+}
+
+/* 小屏幕设备 */
+@media (max-width: 480px) {
+  .VP-lang-toggle {
+    margin-left: 0.25rem;
+  }
+
+  .lang-switch-btn {
+    padding: 0.375rem 0.5rem;
+    min-height: 32px;
+  }
+
+  .lang-text {
+    display: none; /* 在极小屏幕上只显示图标 */
+  }
+
+  .lang-switch-btn {
+    padding: 0.5rem;
+    justify-content: center;
+  }
+}
+
+/* 键盘导航支持 */
+.lang-switch-btn:focus {
+  outline: none;
+}
+
+.lang-switch-btn:focus-visible {
+  outline: 2px solid var(--ln-primary);
+  outline-offset: 2px;
+}
+
+/* 高对比度模式支持 */
+@media (prefers-contrast: high) {
+  .lang-switch-btn {
+    border-width: 2px;
+    border-color: var(--vp-c-text-1);
+  }
+
+  .lang-switch-btn:hover {
+    border-color: var(--ln-primary);
+  }
+}
+
+/* 减少动画偏好支持 */
+@media (prefers-reduced-motion: reduce) {
+  .lang-switch-btn.switching {
+    animation: none;
+  }
+
+  .lang-switch-btn {
+    transition: none;
+  }
+
+  .lang-icon {
+    transition: none;
+  }
+}
+
+/* 触控设备优化 */
+@media (pointer: coarse) {
+  .lang-switch-btn {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 0.625rem 0.875rem;
+  }
+}
+
+/* 多语言内容样式 */
+[data-lang-zh][data-lang-en] {
+  transition: opacity 0.2s ease;
+}
+
+.lang-switching [data-lang-zh][data-lang-en] {
+  opacity: 0.7;
+}
+
+/* 语言特定的样式 */
+.lang-zh {
+  font-family: "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+}
+
+.lang-en {
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* 英文模式下的字体调整 */
+.lang-en .VPDoc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.lang-en .VPDoc h1,
+.lang-en .VPDoc h2,
+.lang-en .VPDoc h3 {
+  font-weight: 600;
+}
+
+/* 导航栏语言切换动画 */
+@keyframes langSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.VP-lang-toggle {
+  animation: langSlideIn 0.3s ease-out;
+}
+
+/* 移动端侧边栏中的语言切换 */
+@media (max-width: 768px) {
+  .VPSidebar .VP-lang-toggle {
+    margin: 1rem;
+    padding: 0;
+  }
+
+  .VPSidebar .lang-switch-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    background: rgba(26, 115, 232, 0.05);
+    border: 1px solid rgba(26, 115, 232, 0.2);
+  }
+
+  .VPSidebar .lang-switch-btn:hover {
+    background: rgba(26, 115, 232, 0.1);
+    border-color: var(--ln-primary);
+  }
+}
+
+/* 打印时隐藏语言切换按钮 */
+@media print {
+  .VP-lang-toggle {
+    display: none !important;
+  }
+}
+
 /* 移动端体验优化 */
 @media (max-width: 768px) {
   /* 移动端Hero区域 */

@@ -6,9 +6,10 @@ export default defineConfig({
   lang: 'zh-CN',
   themeConfig: {
     nav: [
-      { text: '首页', link: '/' },
+      { text: '首页', link: '/', 'data-nav-key': 'home' },
       {
         text: '产品',
+        'data-nav-key': 'products',
         items: [
           { text: 'LangNe 文档平台', link: '/products/langne' },
           { text: '企业管理系统', link: '/products/enterprise' },
@@ -18,6 +19,7 @@ export default defineConfig({
       },
       {
         text: '服务',
+        'data-nav-key': 'services',
         items: [
           { text: '技术架构', link: '/services/architecture' },
           { text: '解决方案', link: '/services/solutions' },
@@ -27,6 +29,7 @@ export default defineConfig({
       },
       {
         text: '案例',
+        'data-nav-key': 'cases',
         items: [
           { text: '成功案例', link: '/cases/success' },
           { text: '客户故事', link: '/cases/stories' },
@@ -35,6 +38,7 @@ export default defineConfig({
       },
       {
         text: '文档',
+        'data-nav-key': 'docs',
         items: [
           { text: '快速开始', link: '/docs/getting-started' },
           { text: 'API 参考', link: '/api-examples' },
@@ -44,14 +48,15 @@ export default defineConfig({
       },
       {
         text: '博客',
+        'data-nav-key': 'blog',
         items: [
           { text: '技术文章', link: '/blog/tech' },
           { text: '行业动态', link: '/blog/industry' },
           { text: '公司新闻', link: '/blog/news' }
         ]
       },
-      { text: '关于我们', link: '/about' },
-      { text: '联系我们', link: '/contact' }
+      { text: '关于我们', link: '/about', 'data-nav-key': 'about' },
+      { text: '联系我们', link: '/contact', 'data-nav-key': 'contact' }
     ],
 
     sidebar: {
